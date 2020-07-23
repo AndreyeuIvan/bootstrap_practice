@@ -15,9 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from test_1.views import PersonCreateView
+from test_1.views import PersonCreateView, PersonUpdateView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('add/', PersonCreateView.as_view(), name='add'),
+    path('<int:pk>/edit', PersonUpdateView.as_view(), name='edit'),
 ]
