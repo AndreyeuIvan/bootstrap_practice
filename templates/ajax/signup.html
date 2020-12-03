@@ -1,0 +1,30 @@
+{% extends 'ajax/base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block javascript %}
+<script>
+    $("#id_username").change(function () {
+      var form = $(this).closest("form");
+      $.ajax({
+        url: form.attr("data-validate-username-url"),
+        data: form.serialize(),
+        dataType: 'json',
+        success: function (data) {
+          if (data.is_taken) {
+            alert(data.error_message);
+          }
+        }
+      });
+
+    });
+</script>
+{% endblock %}
+
+{% block content %}
+<form method="post">
+    {% csrf_token %}
+    {{ form|crispy }}
+    <button type="submit">Sigh up</button>
+</form>
+{% endblock %}
