@@ -39,11 +39,21 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'test_1',
-    'crispy_forms',
+    #'crispy_forms',
     'accounts',
-    'widget_tweaks',
+    #'widget_tweaks',
     'bootstrap',
     'pizzeria',
+
+    #rest app
+    'tutorial',
+
+    #rest
+    'rest_framework',
+
+    # CORS
+    'corsheaders',
+
 ]
 
 MIDDLEWARE = [
@@ -54,6 +64,10 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+    # CORS
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
 ]
 
 ROOT_URLCONF = 'bootstrap.urls'
@@ -131,3 +145,13 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 LOGOUT_REDIRECT_URL = 'add'
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'statics'),
+]
+
+#CORS
+CORS_ORIGIN_ALLOW_ALL = False
+CORS_ORIGIN_WHITELIST = (
+    'http://localhost:8081',
+)

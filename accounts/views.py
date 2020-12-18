@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login
+from django.http import HttpResponse
 
 #Ajax login
 from django.contrib.auth.forms import UserCreationForm
@@ -11,6 +12,7 @@ from django.http import JsonResponse
 
 #Locals
 from .forms import SignUpForm
+from .models import User
 
 
 def signup(request):
@@ -43,3 +45,5 @@ def validate_username(request):
     if data['is_taken']:
         data['error_message'] = 'A user with this username already exists.'
     return JsonResponse(data)
+
+

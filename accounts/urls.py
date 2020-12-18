@@ -1,6 +1,8 @@
 from django.urls import re_path
 from django.contrib.auth.views import LoginView
 from django.contrib.auth import views as auth_views
+from django.conf import settings
+from django.conf.urls.static import static
 
 from . import views
 from accounts import views as accounts_views
