@@ -23,5 +23,6 @@ urlpatterns = [
     path('add/', PersonCreateView.as_view(), name='add'),
     path('<int:pk>/edit', PersonUpdateView.as_view(), name='edit'),
     re_path(r'^users/', include('accounts.urls')),
-    re_path(r'^', include('tutorials.urls')),
+    re_path(r'^', include('tutorial.urls')),
+    path('comment/', include('comment.urls')),
 ]
